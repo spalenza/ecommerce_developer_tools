@@ -83,8 +83,17 @@ $(document).ready(function() {
       case 52: // 4
         copyToClipboard(cnpj(true));
         break;
-      case 53: // 4
+      case 53: // 5
         copyToClipboard(lorem());
+        break;
+      case 54: // 6
+        copyToClipboard(cc_gen('visa'));
+        break;
+      case 55: // 7
+        copyToClipboard(cc_gen('master'));
+        break;
+      case 56: // 8
+        copyToClipboard(cc_gen('amex'));
         break;
     }
     window.close();
