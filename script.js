@@ -14,6 +14,47 @@ function mod(dividendo,divisor) {
   return Math.round(dividendo - (Math.floor(dividendo/divisor)*divisor));
 }
 
+function ci_last_digit(document_ci) {
+  var sum = 0;
+  var multiple = 0;
+  var mod = 0;
+
+  for(var i=0; i < document_ci.length; i++) {
+    pos_number = parseInt(document_ci[i]);
+
+    if((i % 2 == 0)){
+      multiple = pos_number * 2;
+      sum += (multiple > 9) ? multiple - 9 : multiple;
+    } else {
+      sum += pos_number;
+    }
+  }
+
+  mod = sum % 10;
+  if (mod > 0) {
+    mod = 10 - mod
+  }
+
+  return mod;
+}
+
+function ci(){
+  var n1 = gera_random(9);
+  var n2 = gera_random(9);
+  var n3 = gera_random(5);
+  var n4 = gera_random(9);
+  var n5 = gera_random(9);
+  var n6 = gera_random(9);
+  var n7 = gera_random(9);
+  var n8 = gera_random(9);
+  var n9 = gera_random(9);
+
+  var document_ci = ''+n1+n2+n3+n4+n5+n6+n7+n8+n9;
+  var document_ci_digit = ci_last_digit(document_ci);
+
+  return document_ci + document_ci_digit;
+}
+
 function cpf(with_mask) {
   var n = 9;
   var n1 = gera_random(n);
@@ -94,6 +135,12 @@ $(document).ready(function() {
         break;
       case 56: // 8
         copyToClipboard(cc_gen('amex'));
+        break;
+      case 57: // 9
+        copyToClipboard(cc_gen('discover'));
+        break;
+      case 48: // 0
+        copyToClipboard(ci());
         break;
     }
     window.close();
