@@ -38,6 +38,49 @@ function ci_last_digit(document_ci) {
   return mod;
 }
 
+function dni(){
+  var n1 = gera_random(9);
+  var n2 = gera_random(9);
+  var n3 = gera_random(9);
+  var n4 = gera_random(9);
+  var n5 = gera_random(9);
+  var n6 = gera_random(9);
+  var n7 = gera_random(9);
+  var n8 = gera_random(9);
+
+  return ''+n1+n2+n3+n4+n5+n6+n7+n8;
+}
+
+function cuit_dv(person_dni) {
+  var sum  = 0;
+  var digits = person_dni.split("");
+
+  for(var i = 0; i < digits.length; i++) {
+    sum += digits[9 - i] * (2 + (i % 6));
+  }
+
+  var verif = 11 - (sum % 11);
+  if(verif == 11) {
+    verif = 0;
+  }
+
+  return verif;
+}
+
+function cuit() {
+  var prefixes = Array(20,23,24,27,23,24,30,33,34)
+
+  var prefix = prefixes[Math.floor(Math.random()*prefixes.length)];
+  var person_dni, dv;
+
+  do {
+    person_dni = ''+prefix+dni();
+    dv = cuit_dv(person_dni)
+  } while (dv == 10);
+
+  return ''+person_dni+dv;
+}
+
 function ci(){
   var n1 = gera_random(9);
   var n2 = gera_random(9);
@@ -109,6 +152,52 @@ function lorem() {
 }
 
 $(document).ready(function() {
+  $('#instructions a').on("click", function(){
+    console.log($(this).attr("id"));
+
+    switch($(this).attr('id')) {
+      case "cpf": // 1
+        document.execCommand("copy")
+        copyToClipboard(cpf(false));
+        break;
+      case "cpfm": // 2
+        copyToClipboard(cpf(true));
+        break;
+      case "cnpj": // 3
+        copyToClipboard(cnpj(false));
+        break;
+      case "cnpjm": // 4
+        copyToClipboard(cnpj(true));
+        break;
+      case "lorem": // 5
+        copyToClipboard(lorem());
+        break;
+      case "visa": // 6
+        copyToClipboard(cc_gen('visa'));
+        break;
+      case "master": // 7
+        copyToClipboard(cc_gen('master'));
+        break;
+      case "master": // 8
+        copyToClipboard(cc_gen('amex'));
+        break;
+      case "amex": // 9
+        copyToClipboard(cc_gen('discover'));
+        break;
+      case "ci": // 0
+        copyToClipboard(ci());
+        break;
+      case "cuit": // 0
+        copyToClipboard(cuit());
+        break;
+      case "dni": // 0
+        copyToClipboard(dni());
+        break;
+    }
+    window.close();
+    }
+  );
+
   $("body").keypress(function(event) {
     switch (event.which) {
       case 49: // 1
@@ -141,6 +230,12 @@ $(document).ready(function() {
         break;
       case 48: // 0
         copyToClipboard(ci());
+        break;
+      case 97: // 0
+        copyToClipboard(cuit());
+        break;
+      case 115: // 0
+        copyToClipboard(dni());
         break;
     }
     window.close();

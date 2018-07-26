@@ -6,16 +6,18 @@
   <body>
     <input type="text" id="input" style="margin: -999 -999 0 0;"/>
     <div id="instructions">
-      <p>0 - Ecuador CI</p>
-      <p>1 - CPF sem Máscara</p>
-      <p>2 - CPF com Máscara</p>
-      <p>3 - CNPJ sem Máscara</p>
-      <p>4 - CNPJ com Máscara</p>
-      <p>5 - Lorem Ipsum</p>
-      <p>6 - Visa</p>
-      <p>7 - Master</p>
-      <p>8 - Amex</p>
-      <p>9 - Discover</p>
+      <p><a href="#" id="cuit">a - Argentina CUIT</a></p>
+      <p><a href="#" id="dni">s - Argentina DNI</a></p>
+      <p><a href="#" id="ci">0 - Ecuador CI</a></p>
+      <p><a href="#" id="cpf">1 - CPF sem Máscara</a></p>
+      <p><a href="#" id="cpfm">2 - CPF com Máscara</a></p>
+      <p><a href="#" id="cnpj">3 - CNPJ sem Máscara</a></p>
+      <p><a href="#" id="cnpjm">4 - CNPJ com Máscara</a></p>
+      <p><a href="#" id="lorem">5 - Lorem Ipsum</a></p>
+      <p><a href="#" id="visa">6 - Visa</a></p>
+      <p><a href="#" id="master">7 - Master</a></p>
+      <p><a href="#" id="amex">8 - Amex</a></p>
+      <p><a href="#" id="discover">9 - Discover</a></p>
     </div>
     <script src="libs/jquery-1.10.1.min.js" type="text/javascript" charset="utf-8"></script>
     <script src="libs/cc_generator.js" type="text/javascript" charset="utf-8"></script>
@@ -23,12 +25,24 @@
     <style type="text/css" media="screen">
       html, body {
         width: 175px;
-        height: 305px;
+        height: 390px;
         font-family: 'Lato';
         color: black;
         font-size: 14px;
-        padding: 0 5px 10px 5px;
+        padding: 0 5px 5px 5px;
         background-color: #F2F4F5;
+      }
+
+      a {
+        color: black;
+      }
+
+      a:hover {
+        color: #999;
+      }
+
+      a:hover, a:link, a:active {
+        text-decoration: none;
       }
     </style>
   </body>
